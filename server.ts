@@ -20,6 +20,8 @@ import AuthenticationController from "./controllers/AuthenticationController";
 import mongoose from "mongoose";
 import GroupController from "./controllers/GroupController";
 const cors = require("cors");
+
+//A4 first guidelines
 const session = require("express-session");
 
 // build the connection string
@@ -33,23 +35,24 @@ const DB_QUERY = "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;// connect to the database
 mongoose.connect(connectionString);
 
+
+//Changed for a4
 const app = express();
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:3000'
 }));
 
-const SECRET = 'process.env.SECRET';
+//Changed for a4
 let sess = {
-    secret: SECRET,
-    saveUninitialized: true,
-    resave: true,
+    secret: process.env.SECRET,
     cookie: {
         secure: false
     }
 }
 
-if (process.env.ENVIRONMENT === 'PRODUCTION') {
+//Changed to A4 book
+if (process.env.ENV === 'PRODUCTION') {
     app.set('trust proxy', 1) // trust first proxy
     sess.cookie.secure = true // serve secure cookies
 }
