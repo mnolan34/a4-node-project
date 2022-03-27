@@ -14,6 +14,13 @@ const AuthenticationController = (app: Express) => {
         console.log(password)
         const existingUser = await userDao
             .findUserByUsername(username);
+
+        //this added, as according to packet
+        if(!existingUser){
+            res.sendStatus(403);
+            return;
+        }
+
         const match = await bcrypt.compare(password, existingUser.password);
 
         if (match) {
