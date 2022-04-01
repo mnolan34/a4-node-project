@@ -48,13 +48,13 @@ let sess = {
     saveUninitialized: true,
     resave: true,
     cookie: {
-        sameSite: process.env.NODE_ENV === "PRODUCTION" ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === "PRODUCTION",
+        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === "production",
     }
 }
 
 //Changed to A4 book
-if (process.env.ENV === 'PRODUCTION') {
+if (process.env.ENV === 'production') {
     app.set('trust proxy', 1) // trust first proxy
 }
 
