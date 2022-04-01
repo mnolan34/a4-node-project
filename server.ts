@@ -19,9 +19,9 @@ import SessionController from "./controllers/SessionController";
 import AuthenticationController from "./controllers/AuthenticationController";
 import mongoose from "mongoose";
 import GroupController from "./controllers/GroupController";
-const cors = require("cors");
 
 //A4 first guidelines
+const cors = require("cors");
 const session = require("express-session");
 
 // build the connection string
@@ -56,10 +56,9 @@ let sess = {
 //Changed to A4 book
 if (process.env.ENV === 'PRODUCTION') {
     app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true // serve secure cookies
 }
 
-app.use(session(sess))
+app.use(session(sess));
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) =>
