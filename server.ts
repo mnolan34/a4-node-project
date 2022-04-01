@@ -40,18 +40,19 @@ mongoose.connect(connectionString);
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: process.env.CORS_ORIGIN
 }));
 
 //Changed for a4
 let sess = {
     secret: process.env.SECRET,
+    saveUninitialized: true,
+    resave: true,
     cookie: {
-        secure: false
+        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === "production",
     }
 }
-
-
 
 //Changed to A4 book
 if (process.env.ENV === 'PRODUCTION') {
