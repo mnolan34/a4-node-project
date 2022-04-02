@@ -19,6 +19,7 @@ import SessionController from "./controllers/SessionController";
 import AuthenticationController from "./controllers/AuthenticationController";
 import mongoose from "mongoose";
 import GroupController from "./controllers/GroupController";
+import DislikeController from "./controllers/DislikeController";
 
 //A4 first guidelines
 //Changed const to let as per Piazza
@@ -76,6 +77,7 @@ const courseController = new CourseController(app);
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likesController = LikeController.getInstance(app);
+const dislikesController = DislikeController.getInstance(app);
 SessionController(app);
 AuthenticationController(app);
 GroupController(app);
