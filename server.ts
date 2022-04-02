@@ -52,8 +52,8 @@ let sess = {
     store: MongoStore.create({mongoUrl: connectionString}),
     resave: true,
     cookie: {
-        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.ENV === "production" ? 'none' : 'lax',
+        secure: process.env.ENV === "production",
     }
 }
 
