@@ -48,7 +48,7 @@ app.use(cors({
 let sess = {
     secret: process.env.SECRET,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: HOST}),
+    store: MongoStore.create({mongoUrl: connectionString}),
     resave: true,
     cookie: {
         sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
