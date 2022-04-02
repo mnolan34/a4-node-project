@@ -15,6 +15,7 @@ export default class DislikeDao implements DislikeDaoI {
             .find({tuit: tid})
             .populate("dislikedBy")
             .exec();
+
     findAllTuitsDislikedByUser = async (uid: string): Promise<Dislike[]> =>
         DislikeModel
             .find({dislikedBy: uid})
@@ -25,6 +26,7 @@ export default class DislikeDao implements DislikeDaoI {
                 }
             })
             .exec();
+
     userDislikesTuit = async (uid: string, tid: string): Promise<any> =>
         DislikeModel.create({tuit: tid, dislikedBy: uid});
     findUserDislikesTuit = async (uid: string, tid: string): Promise<any> =>
