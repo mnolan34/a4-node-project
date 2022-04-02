@@ -31,7 +31,7 @@ const MongoStore = require('connect-mongo');
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: "fse-a4.herokuapp.com"
+    origin: process.env.CORS_ORIGIN
 }));
 
 
