@@ -21,8 +21,10 @@ import mongoose from "mongoose";
 import GroupController from "./controllers/GroupController";
 
 //A4 first guidelines
-const cors = require("cors");
-const session = require("express-session");
+//Changed const to let as per Piazza
+let cors = require("cors");
+let session = require("express-session");
+const MongoStore = require('connect-mongo');
 
 // build the connection string
 const PROTOCOL = "mongodb+srv";
@@ -46,6 +48,7 @@ app.use(cors({
 let sess = {
     secret: process.env.SECRET,
     saveUninitialized: true,
+    store: MongoStore.create({mongoUrl: HOST}),
     resave: true,
     cookie: {
         sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
