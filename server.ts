@@ -31,7 +31,7 @@ const MongoStore = require('connect-mongo');
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: "dazzling-swan-d6fed9.netlify.app"
+    origin: "fse-a4.herokuapp.com"
 }));
 
 
