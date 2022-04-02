@@ -26,6 +26,15 @@ let cors = require("cors");
 let session = require("express-session");
 const MongoStore = require('connect-mongo');
 
+
+//Changed for a4: Adding it above Mongoose as per Piazza
+const app = express();
+app.use(cors({
+    credentials: true,
+    origin: process.env.CORS_ORIGIN
+}));
+
+
 // build the connection string
 const PROTOCOL = "mongodb+srv";
 const DB_USERNAME = process.env.DB_USERNAME;
@@ -37,12 +46,6 @@ const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${
 mongoose.connect(connectionString);
 
 
-//Changed for a4
-const app = express();
-app.use(cors({
-    credentials: true,
-    origin: process.env.CORS_ORIGIN
-}));
 
 //Changed for a4
 let sess = {
